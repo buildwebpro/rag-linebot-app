@@ -1,8 +1,9 @@
 import os
+from langchain_community.vectorstores import FAISS
 from langchain_openai import ChatOpenAI
+from langchain_openai import OpenAIEmbeddings
 from langchain.chains import RetrievalQA
-from langchain.vectorstores import FAISS
-from langchain.embeddings import OpenAIEmbeddings
+
 
 def get_rag_chain():
     embeddings = OpenAIEmbeddings(

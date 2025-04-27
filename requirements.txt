@@ -6,4 +6,4 @@ line-bot-sdk
 python-dotenv
 langchain
 langchain-openai
-
+langchain-community

@@ -1,7 +1,9 @@
 fastapi
 uvicorn
-langchain
 openai
 faiss-cpu
 line-bot-sdk
 python-dotenv
+langchain
+langchain-openai
+

@@ -1,16 +1,18 @@
 import os
+from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from langchain_community.vectorstores import FAISS
-from langchain_openai import ChatOpenAI
-from langchain_openai import OpenAIEmbeddings
 from langchain.chains import RetrievalQA
-
 
 def get_rag_chain():
     embeddings = OpenAIEmbeddings(
         openai_api_key=os.getenv("OPENROUTER_API_KEY"),
         openai_api_base="https://openrouter.ai/api/v1",
     )
-    db = FAISS.load_local("faiss_index", embeddings)
+    db = FAISS.load_local(
+        folder_path="faiss_index",
+        embeddings=embeddings,
+        allow_dangerous_deserialization=True
+    )
     retriever = db.as_retriever()
     llm = ChatOpenAI(
         openai_api_key=os.getenv("OPENROUTER_API_KEY"),
